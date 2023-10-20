@@ -10,12 +10,12 @@ import { AuthModule } from './auth/auth.module';
   imports: [
     TypeOrmModule.forRoot({
       type: 'mysql',
-      host: 'localhost',
+      host: 'db',
       port: 3306,
-      username: process.env.DATABASE_USER,
-      password: process.env.DATABASE_PASSWORD,
-      database: 'quizziky',
-      entities: [User],
+      username: 'root',
+      password: 'mon-mot-de-passe-mysql',
+      database: 'ma-base-de-donnees',
+      entities: ['dist/**/*.entity{.ts,.js}'],
       synchronize: true,
     }),
     UserModule,
