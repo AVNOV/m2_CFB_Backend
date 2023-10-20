@@ -5,9 +5,11 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
-      - '5555:3000'
+      - '5555:5555'
     depends_on:
       - db
+    networks:
+      - mynetwork
   db:
     image: mysql
     environment:
@@ -15,3 +17,7 @@ services:
       MYSQL_DATABASE: quizziky
     ports:
       - '3306:3306'
+    networks:
+      - mynetwork
+networks:
+  mynetwork:
