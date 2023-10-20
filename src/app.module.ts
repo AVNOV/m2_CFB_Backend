@@ -15,7 +15,7 @@ import { AuthModule } from './auth/auth.module';
       username: 'root',
       password: '1234',
       database: 'quizziky',
-      entities: ['dist/**/*.entity{.ts,.js}'],
+      entities: [User],
       synchronize: true,
     }),
     UserModule,
