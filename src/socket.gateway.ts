@@ -6,7 +6,7 @@ import {
 import { Server } from 'socket.io';
 import { MessageService } from './services/message.service';
 
-@WebSocketGateway()
+@WebSocketGateway({ cors: true })
 export class SocketGateway {
   constructor(private readonly messageService: MessageService) {}
 
