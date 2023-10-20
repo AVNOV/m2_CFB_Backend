@@ -5,6 +5,8 @@ import 'dotenv/config';
 import { User } from './entities/user.entity';
 import { UserModule } from './modules/user.module';
 import { AuthModule } from './auth/auth.module';
+import { SocketModule } from './socket.module';
+import { MessageService } from './services/message.service';
 
 @Module({
   imports: [
@@ -20,8 +22,9 @@ import { AuthModule } from './auth/auth.module';
     }),
     UserModule,
     AuthModule,
+    SocketModule,
   ],
   controllers: [AppController],
-  providers: [],
+  providers: [MessageService],
 })
 export class AppModule {}
