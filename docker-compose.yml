@@ -5,13 +5,13 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
-      - '3000:3000'
+      - '4000:3000'
     depends_on:
       - db
   db:
     image: mysql
     environment:
-      MYSQL_ROOT_PASSWORD: mon-mot-de-passe-mysql
-      MYSQL_DATABASE: ma-base-de-donnees
+      MYSQL_ROOT_PASSWORD: '1234'
+      MYSQL_DATABASE: quizziky
     ports:
       - '3306:3306'
