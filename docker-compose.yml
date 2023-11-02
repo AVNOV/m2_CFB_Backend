@@ -20,7 +20,7 @@ services:
       MYSQL_ROOT_PASSWORD: '1234'
       MYSQL_DATABASE: quizziky
     ports:
-      - '3306:3306'
+      - '3307:3306'
     networks:
       - mynetwork
     volumes:
