@@ -21,10 +21,6 @@ export class Question {
   title: string;
 
   @ApiProperty()
-  @Column({ name: 'right_answer' })
-  rightAnswer: boolean;
-
-  @ApiProperty()
   @Column({
     type: 'timestamp',
     onUpdate: 'CURRENT_TIMESTAMP',

@@ -29,6 +29,10 @@ export class Quiz {
   difficulty: number;
 
   @ApiProperty()
+  @Column({ name: 'theme_id' })
+  themeId: number;
+
+  @ApiProperty()
   @Column({
     type: 'timestamp',
     onUpdate: 'CURRENT_TIMESTAMP',
@@ -48,7 +52,7 @@ export class Quiz {
   @ApiProperty({ name: 'deleted_at' })
   @Column({
     type: 'timestamp',
-    default: () => null,
+    default: null,
     name: 'deleted_at',
   })
   deletedAt: Date;

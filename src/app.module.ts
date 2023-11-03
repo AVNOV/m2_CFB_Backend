@@ -13,6 +13,8 @@ import { Quiz } from './entities/quiz.entity';
 import { Theme } from './entities/theme.entity';
 import { Game } from './entities/game.entity';
 import { GameUser } from './entities/game_user.entity';
+import { ThemeModule } from './modules/theme.module';
+import { QuizModule } from './modules/quiz.module';
 
 @Module({
   imports: [
@@ -29,6 +31,8 @@ import { GameUser } from './entities/game_user.entity';
     UserModule,
     AuthModule,
     SocketModule,
+    ThemeModule,
+    QuizModule,
   ],
   controllers: [AppController],
   providers: [MessageService],
