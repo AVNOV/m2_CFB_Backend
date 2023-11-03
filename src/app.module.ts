@@ -7,6 +7,12 @@ import { UserModule } from './modules/user.module';
 import { AuthModule } from './auth/auth.module';
 import { SocketModule } from './socket.module';
 import { MessageService } from './services/message.service';
+import { Answer } from './entities/answer.entity';
+import { Question } from './entities/question.entity';
+import { Quiz } from './entities/quiz.entity';
+import { Theme } from './entities/theme.entity';
+import { Game } from './entities/game.entity';
+import { GameUser } from './entities/game_user.entity';
 
 @Module({
   imports: [
@@ -17,7 +23,7 @@ import { MessageService } from './services/message.service';
       username: 'root',
       password: '1234',
       database: 'quizziky',
-      entities: [User],
+      entities: [User, Answer, Question, Quiz, Theme, Game, GameUser],
       synchronize: true,
     }),
     UserModule,
