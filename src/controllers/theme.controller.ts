@@ -7,7 +7,7 @@ import {
 } from '@nestjs/common';
 import {
   ApiAcceptedResponse,
-  ApiBadRequestResponse,
+  ApiInternalServerErrorResponse,
   ApiBearerAuth,
   ApiForbiddenResponse,
 } from '@nestjs/swagger';
@@ -26,7 +26,7 @@ export class ThemeController {
     type: Theme,
     isArray: true,
   })
-  @ApiBadRequestResponse({ description: "Une erreur s'est produite." })
+  @ApiInternalServerErrorResponse({ description: "Une erreur s'est produite." })
   @ApiForbiddenResponse({
     description: "Vous n'avez pas le droit de faire ça.",
   })
