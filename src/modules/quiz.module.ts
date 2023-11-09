@@ -6,7 +6,6 @@ import { QuizService } from 'src/services/quiz.service';
 
 @Module({
   imports: [TypeOrmModule.forFeature([Quiz])],
-  exports: [QuizService],
   controllers: [QuizController],
   providers: [QuizService],
 })
