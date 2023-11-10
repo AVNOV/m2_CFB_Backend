@@ -90,4 +90,26 @@ export class QuizController {
       );
     }
   }
+
+  @UseGuards(JwtAuthGuard)
+  @ApiBearerAuth()
+  @ApiAcceptedResponse({
+    type: Quiz,
+    isArray: true,
+  })
+  @ApiInternalServerErrorResponse({ description: "Une erreur s'est produite." })
+  @ApiForbiddenResponse({
+    description: "Vous n'avez pas le droit de faire ça.",
+  })
+  @Get()
+  async findByUser(@Request() req: any) {
+    try {
+      return this.quizService.findByUserId(req.user.id);
+    } catch (error) {
+      throw new HttpException(
+        "Une erreur s'est produite.",
+        HttpStatus.INTERNAL_SERVER_ERROR,
+      );
+    }
+  }
 }

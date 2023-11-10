@@ -48,4 +48,13 @@ export class QuizService {
 
     return this.quizRepository.save(quiz);
   }
+
+  async findByUserId(userId: number) {
+    return this.quizRepository.find({
+      where: { user: { id: userId } },
+      relations: {
+        theme: true,
+      },
+    });
+  }
 }
