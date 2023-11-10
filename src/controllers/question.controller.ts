@@ -3,17 +3,18 @@ import {
   Controller,
   Post,
   UseGuards,
-  Request,
   HttpException,
   HttpStatus,
 } from '@nestjs/common';
 import {
   ApiAcceptedResponse,
   ApiBearerAuth,
+  ApiBody,
   ApiForbiddenResponse,
   ApiInternalServerErrorResponse,
 } from '@nestjs/swagger';
 import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
+import { CreateQuestionDto } from 'src/dto/create-question.dto';
 import { Question } from 'src/entities/question.entity';
 import { QuestionService } from 'src/services/question.service';
 
@@ -32,7 +33,8 @@ export class QuestionController {
     type: Question,
     isArray: false,
   })
-  async create(@Body() createQuestion: { title: string }) {
+  @ApiBody({ type: CreateQuestionDto })
+  async create(@Body() createQuestion: CreateQuestionDto) {
     try {
       return this.questionService.create(createQuestion);
     } catch (error) {
