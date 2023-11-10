@@ -12,7 +12,7 @@ export class QuestionService {
   ) {}
 
   async create(createQuestion: CreateQuestionDto) {
-    const question = this.questionRepository.create({
+    const question = await this.questionRepository.save({
       title: createQuestion.title,
       quizzes: [{ id: createQuestion.quizId }],
     });
