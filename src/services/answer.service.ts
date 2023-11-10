@@ -12,7 +12,10 @@ export class AnswerService {
   ) {}
 
   async create(createAnswer: CreateAnswerDto) {
-    const answer = this.answerRepository.create(createAnswer);
+    const answer = this.answerRepository.create({
+      ...createAnswer,
+      question: { id: createAnswer.questionId },
+    });
 
     return this.answerRepository.save(answer);
   }
