@@ -38,7 +38,7 @@ export class QuizController {
   })
   async create(@Body() createQuiz: CreateQuizDto, @Request() req: any) {
     try {
-      return this.quizService.create(createQuiz, req.user.userId);
+      return this.quizService.create(createQuiz, req.user.id);
     } catch (error) {
       throw new HttpException(
         "Une erreur s'est produite.",
