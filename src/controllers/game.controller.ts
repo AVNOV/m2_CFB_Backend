@@ -97,7 +97,6 @@ export class GameController {
     try {
       return this.gameService.findOne(parseInt(gameId), parseInt(req.user.id));
     } catch (error) {
-      console.log(error);
       throw new HttpException(
         "Une erreur s'est produite.",
         HttpStatus.INTERNAL_SERVER_ERROR,

@@ -1,5 +1,6 @@
-import { Injectable } from '@nestjs/common';
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { CreateQuizDto } from 'src/dto/create-quiz.dto';
 import { Quiz } from 'src/entities/quiz.entity';
 import { Repository } from 'typeorm';
 
@@ -21,5 +22,30 @@ export class QuizService {
     });
 
     return quizzes[Math.floor(Math.random() * quizzes.length)];
+  }
+
+  async create(createQuiz: CreateQuizDto, userId: number) {
+    const quiz = this.quizRepository.create({
+      ...createQuiz,
+      user: { id: userId },
+    });
+
+    return this.quizRepository.save(quiz);
+  }
+
+  async update(quizId, updateQuiz: CreateQuizDto) {
+    const quiz = await this.quizRepository.findOne({ where: { id: quizId } });
+
+    if (!quiz)
+      return new HttpException(
+        "Le quiz que vous essayez de modifier n'existe pas.",
+        HttpStatus.BAD_REQUEST,
+      );
+
+    quiz.title = updateQuiz.title || quiz.title;
+    quiz.difficulty = updateQuiz.difficulty || quiz.difficulty;
+    quiz.themeId = updateQuiz.themeId || quiz.themeId;
+
+    return this.quizRepository.save(quiz);
   }
 }
