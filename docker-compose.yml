@@ -15,12 +15,15 @@ services:
       - /app/node_modules/
   db:
     image: mysql
+    restart: on-failure
     environment:
       MYSQL_ROOT_PASSWORD: '1234'
       MYSQL_DATABASE: quizziky
     ports:
-      - '3306:3306'
+      - '3307:3306'
     networks:
       - mynetwork
+    volumes:
+      - ./db_data:/var/lib/mysql
 networks:
   mynetwork:

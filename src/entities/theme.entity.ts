@@ -1,29 +1,16 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { Quiz } from './quiz.entity';
-import { GameUser } from './game_user.entity';
 
 @Entity()
-export class User {
+export class Theme {
   @ApiProperty()
   @PrimaryGeneratedColumn()
   id: number;
 
   @ApiProperty()
   @Column()
-  firstname: string;
-
-  @ApiProperty()
-  @Column()
-  lastname: string;
-
-  @ApiProperty()
-  @Column({ unique: true })
-  email: string;
-
-  @ApiProperty()
-  @Column()
-  password: string;
+  name: string;
 
   @ApiProperty()
   @Column({
@@ -42,9 +29,6 @@ export class User {
   })
   createdAt: Date;
 
-  @OneToMany(() => Quiz, (quiz) => quiz.user)
+  @OneToMany(() => Quiz, (quiz) => quiz.theme)
   quizzes: Quiz[];
-
-  @OneToMany(() => GameUser, (gameUser) => gameUser.user)
-  gameUser: GameUser[];
 }
