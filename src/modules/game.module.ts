@@ -8,6 +8,7 @@ import { GameUserService } from 'src/services/gameUser.service';
 
 @Module({
   imports: [TypeOrmModule.forFeature([Game, GameUser])],
+  exports: [GameService],
   controllers: [GameController],
   providers: [GameService, GameUserService],
 })

@@ -1,4 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
+import { Room } from 'src/entities/room.entity';
 
 export class UpdateUserDto {
   @ApiProperty({ required: false })
@@ -12,4 +13,7 @@ export class UpdateUserDto {
 
   @ApiProperty({ required: false })
   password: string;
+
+  @ApiProperty({ required: false })
+  room: Room;
 }

@@ -18,6 +18,8 @@ import { QuizModule } from './modules/quiz.module';
 import { GameModule } from './modules/game.module';
 import { QuestionModule } from './modules/question.module';
 import { AnswerModule } from './modules/answer.module';
+import { RoomsModule } from './modules/rooms.module';
+import { Room } from './entities/room.entity';
 
 @Module({
   imports: [
@@ -28,7 +30,7 @@ import { AnswerModule } from './modules/answer.module';
       username: process.env.DB_USER.toString(),
       password: process.env.DB_PASSWORD.toString(),
       database: 'quizziky',
-      entities: [User, Answer, Question, Quiz, Theme, Game, GameUser],
+      entities: [User, Answer, Question, Quiz, Theme, Game, GameUser, Room],
       synchronize: true,
     }),
     UserModule,
@@ -39,6 +41,7 @@ import { AnswerModule } from './modules/answer.module';
     GameModule,
     QuestionModule,
     AnswerModule,
+    RoomsModule,
   ],
   controllers: [AppController],
   providers: [MessageService],
