@@ -14,7 +14,7 @@ export class GameService {
     return this.gameRepository.save(game);
   }
 
-  async findOne(id: number, userId: number): Promise<Game> {
+  async findOne(id: number): Promise<Game> {
     const game = await this.gameRepository.findOne({
       where: { id },
       relations: [
@@ -27,10 +27,6 @@ export class GameService {
 
     if (!game)
       throw new HttpException("La partie n'existe pas", HttpStatus.BAD_REQUEST);
-
-    const userIds = game.gameUser.map((gameUser) => gameUser.userId);
-    if (!userIds.includes(userId))
-      throw new HttpException('Unauthorized', HttpStatus.UNAUTHORIZED);
 
     return game;
   }

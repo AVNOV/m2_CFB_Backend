@@ -1,7 +1,14 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  ManyToOne,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 import { Quiz } from './quiz.entity';
 import { GameUser } from './game_user.entity';
+import { Room } from './room.entity';
 
 @Entity()
 export class User {
@@ -47,4 +54,7 @@ export class User {
 
   @OneToMany(() => GameUser, (gameUser) => gameUser.user)
   gameUser: GameUser[];
+
+  @ManyToOne(() => Room, (room) => room.users)
+  room: Room;
 }

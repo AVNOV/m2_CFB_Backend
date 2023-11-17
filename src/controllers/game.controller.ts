@@ -93,9 +93,9 @@ export class GameController {
   @ApiUnauthorizedResponse({
     description: 'Unauthorized.',
   })
-  async findOne(@Param('id') gameId: string, @Request() req: any) {
+  async findOne(@Param('id') gameId: string) {
     try {
-      return this.gameService.findOne(parseInt(gameId), parseInt(req.user.id));
+      return this.gameService.findOne(+gameId);
     } catch (error) {
       throw new HttpException(
         "Une erreur s'est produite.",
