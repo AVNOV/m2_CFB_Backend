@@ -21,7 +21,10 @@ async function bootstrap() {
   app.useGlobalFilters(new SentryFilter(httpAdapter));
 
   const corsOptions: CorsOptions = {
-    origin: 'http://localhost:3000',
+    origin:
+      process.env.NODE_ENV === 'development'
+        ? 'http://localhost:3000'
+        : 'https://quizziky.vercel.app/',
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     preflightContinue: false,
     optionsSuccessStatus: 204,

@@ -22,11 +22,11 @@ import { AnswerModule } from './modules/answer.module';
 @Module({
   imports: [
     TypeOrmModule.forRoot({
-      type: 'mysql',
-      host: 'db',
-      port: 3306,
-      username: 'root',
-      password: '1234',
+      type: <'mysql' | 'postgres'>process.env.DB_TYPE,
+      host: process.env.DB_HOST.toString(),
+      port: parseInt(process.env.DB_PORT),
+      username: process.env.DB_USER.toString(),
+      password: process.env.DB_PASSWORD.toString(),
       database: 'quizziky',
       entities: [User, Answer, Question, Quiz, Theme, Game, GameUser],
       synchronize: true,
