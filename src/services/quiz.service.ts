@@ -11,7 +11,7 @@ export class QuizService {
   ) {}
 
   async randomOneByThemeId(themeId: number): Promise<Quiz> {
-    const quizzes = await this.quizRepository.find({
+    let quizzes = await this.quizRepository.find({
       where: { themeId },
       relations: {
         theme: true,
@@ -20,6 +20,8 @@ export class QuizService {
         games: true,
       },
     });
+
+    quizzes = quizzes.filter((quiz) => quiz.questions?.length > 0);
 
     return quizzes[Math.floor(Math.random() * quizzes.length)];
   }
