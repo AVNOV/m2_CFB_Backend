@@ -54,6 +54,8 @@ export class QuizService {
       where: { user: { id: userId } },
       relations: {
         theme: true,
+        questions: { answers: true },
+        games: true,
       },
     });
   }
